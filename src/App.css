@@ -1,17 +1,28 @@
 .app {
-  min-height: 100vh;
-  width: 100%;
-  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  /* Dynamic viewport height for mobile browsers */
+  width: 100vw;
+  width: 100dvw;
+  /* Dynamic viewport width for mobile browsers */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-image: url('/background.png');
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   padding: 0;
+  margin: 0;
   overflow: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 .app-header {
@@ -44,6 +55,8 @@
   display: flex;
   justify-content: center;
   animation: fadeIn 0.5s ease-in;
+  position: relative;
+  z-index: 5;
 }
 
 @keyframes fadeIn {
@@ -80,6 +93,11 @@
 
 /* Mobile optimizations */
 @media (max-width: 767px) {
+  .app {
+    background-attachment: scroll;
+    /* Better performance on mobile */
+  }
+
   .app-header {
     padding: 15px;
   }
