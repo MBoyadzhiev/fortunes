@@ -1,119 +1,49 @@
 .app {
   min-height: 100vh;
+  width: 100%;
+  position: relative;
+  background-image: url('/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 20px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  /* Mobile-only: Hide on desktop */
-}
-
-.container {
-  width: 100%;
-  max-width: 100%;
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  padding: 30px 20px;
-  text-align: center;
-  min-height: calc(100vh - 40px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-header {
-  margin-bottom: 30px;
-}
-
-header h1 {
-  font-size: 2rem;
-  margin: 0 0 10px 0;
-  color: #333;
-  font-weight: 700;
-}
-
-header p {
-  font-size: 1rem;
-  color: #666;
-  margin: 0;
-  padding: 0 10px;
-}
-
-.start-section {
-  margin: 40px 0;
-}
-
-.scan-button {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  padding: 18px 40px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-  width: 100%;
-  max-width: 300px;
-  touch-action: manipulation;
-}
-
-.scan-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-}
-
-.scan-button:active {
-  transform: translateY(0);
-}
-
-.scanner-section {
-  margin: 20px 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.scanner {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto 20px;
-  border-radius: 15px;
+  justify-content: flex-start;
+  padding: 0;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  min-height: 300px;
 }
 
-.stop-button {
-  background: #e74c3c;
-  color: white;
-  border: none;
-  padding: 12px 30px;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: background 0.2s;
+.app-header {
   width: 100%;
-  max-width: 300px;
-  margin: 0 auto;
-  touch-action: manipulation;
+  padding: 20px;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
 }
 
-.stop-button:hover {
-  background: #c0392b;
+.shop-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.shop-title .red-u {
+  color: #ff0000;
 }
 
 .fortune-section {
-  margin: 20px 0;
-  animation: fadeIn 0.5s ease-in;
-  flex: 1;
+  width: 100%;
+  padding-top: 33vh;
+  padding-left: 20px;
+  padding-right: 20px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  animation: fadeIn 0.5s ease-in;
 }
 
 @keyframes fadeIn {
@@ -128,91 +58,73 @@ header p {
 }
 
 .fortune-card {
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 20px;
   padding: 30px 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.fortune-icon {
-  font-size: 3.5rem;
-  margin-bottom: 20px;
-  animation: bounce 1s ease-in-out;
-}
-
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  max-width: 90%;
+  width: 100%;
+  text-align: center;
 }
 
 .fortune-text {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   line-height: 1.6;
-  color: #333;
-  margin: 0 0 30px 0;
+  color: #000000;
+  margin: 0;
   font-style: italic;
   font-weight: 500;
   padding: 0 10px;
 }
 
-.new-scan-button {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  padding: 14px 35px;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-  width: 100%;
-  max-width: 300px;
-  margin: 0 auto;
-  touch-action: manipulation;
+/* Mobile optimizations */
+@media (max-width: 767px) {
+  .app-header {
+    padding: 15px;
+  }
+
+  .shop-title {
+    font-size: 1.2rem;
+  }
+
+  .fortune-section {
+    padding-top: 30vh;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .fortune-card {
+    padding: 25px 15px;
+    max-width: 95%;
+  }
+
+  .fortune-text {
+    font-size: 1.1rem;
+  }
 }
 
-.new-scan-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-}
+@media (max-width: 480px) {
+  .app-header {
+    padding: 12px;
+  }
 
-.error-message {
-  margin: 30px 0;
-  padding: 20px;
-  background: #fee;
-  border-radius: 15px;
-  border: 2px solid #fcc;
-}
+  .shop-title {
+    font-size: 1rem;
+  }
 
-.error-message p {
-  color: #c33;
-  margin: 0 0 15px 0;
-  font-size: 1rem;
-}
+  .fortune-section {
+    padding-top: 28vh;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
 
-.retry-button {
-  background: #667eea;
-  color: white;
-  border: none;
-  padding: 12px 30px;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: background 0.2s;
-  width: 100%;
-  max-width: 300px;
-  margin: 0 auto;
-  touch-action: manipulation;
-}
+  .fortune-card {
+    padding: 20px 12px;
+  }
 
-.retry-button:hover {
-  background: #5568d3;
+  .fortune-text {
+    font-size: 1rem;
+  }
 }
 
 /* Desktop warning - show message for desktop users */
@@ -236,71 +148,7 @@ header p {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   }
   
-  .container {
+  .app {
     opacity: 0.3;
   }
-}
-
-/* Mobile optimizations */
-@media (max-width: 767px) {
-  .container {
-    max-width: 100%;
-    padding: 25px 15px;
-    border-radius: 0;
-    min-height: 100vh;
-  }
-
-  header h1 {
-    font-size: 1.75rem;
-  }
-
-  header p {
-    font-size: 0.95rem;
-  }
-
-  .scan-button {
-    padding: 16px 30px;
-    font-size: 1.1rem;
-  }
-
-  .fortune-text {
-    font-size: 1.1rem;
-  }
-
-  .fortune-card {
-    padding: 25px 15px;
-  }
-
-  .scanner {
-    min-height: 250px;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 20px 12px;
-  }
-
-  header h1 {
-    font-size: 1.5rem;
-  }
-
-  .fortune-text {
-    font-size: 1rem;
-  }
-
-  .fortune-card {
-    padding: 20px 12px;
-  }
-
-  .fortune-icon {
-    font-size: 3rem;
-  }
-}
-
-/* Prevent text selection on buttons for better mobile UX */
-button {
-  -webkit-tap-highlight-color: transparent;
-  user-select: none;
-  -webkit-user-select: none;
 }

@@ -16,31 +16,20 @@ function App() {
     setFortune(randomFortune)
   }, [])
 
-  const handleNewFortune = () => {
-    const randomFortune = getRandomFortune()
-    setFortune(randomFortune)
-  }
-
   return (
     <div className="app">
-      <div className="container">
-        <header>
-          <h1>☕ Твоята Съдба</h1>
-          <p>Добре дошли!</p>
-        </header>
-
-        {fortune && (
-          <div className="fortune-section">
-            <div className="fortune-card">
-              <div className="fortune-icon">🍀</div>
-              <p className="fortune-text">{fortune}</p>
-              <button className="new-scan-button" onClick={handleNewFortune}>
-                Нова Съдба
-              </button>
-            </div>
-          </div>
-        )}
+      <div className="app-header">
+        <h1 className="shop-title">
+          Късмет от Pa<span className="red-u">u</span>se Shop
+        </h1>
       </div>
+      {fortune && (
+        <div className="fortune-section">
+          <div className="fortune-card">
+            <p className="fortune-text">{fortune}</p>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
