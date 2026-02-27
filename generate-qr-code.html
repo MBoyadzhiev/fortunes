@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="bg">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генерирай QR Код за Магазина</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .info {
+            background: #f5f7fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .app-url {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.1rem;
+            margin-top: 10px;
+            word-break: break-all;
+        }
+
+        #qrcode {
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+        }
+
+        .print-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .print-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .instructions {
+            margin-top: 30px;
+            padding: 20px;
+            background: #e8f4f8;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        .instructions h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .instructions ol {
+            margin-left: 20px;
+            color: #666;
+        }
+
+        .instructions li {
+            margin-bottom: 8px;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #c3e6cb;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>☕ Генерирай QR Код за Магазина</h1>
+
+        <div class="success-message">
+            ✅ QR кодът е готов! Разпечатай го и постави в магазина.
+        </div>
+
+        <div class="info">
+            <p>Твоят App URL:</p>
+            <div class="app-url" id="appUrl">https://fortunes-mu.vercel.app/</div>
+        </div>
+
+        <div id="qrcode"></div>
+
+        <button class="print-button" onclick="window.print()">
+            🖨️ Разпечатай QR Кода
+        </button>
+
+        <div class="instructions">
+            <h3>Инструкции:</h3>
+            <ol>
+                <li>Натисни "Разпечатай QR Кода" бутона</li>
+                <li>Разпечатай QR кода</li>
+                <li>Постави го на видно място в магазина</li>
+                <li>Клиентите сканират QR кода с камерата на телефона</li>
+                <li>Приложението се отваря автоматично и показва съдба!</li>
+            </ol>
+            <p style="margin-top: 15px; color: #333; font-weight: bold;">
+                📱 Как работи: Клиентът отваря камерата → сканира QR кода → приложението се отваря → съдбата се показва
+                автоматично!
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // App URL
+        const appUrl = 'https://fortunes-mu.vercel.app/';
+
+        // Generate QR code on page load
+        window.onload = function () {
+            // Clear any previous QR code
+            document.getElementById('qrcode').innerHTML = '';
+
+            // Generate new QR code
+            new QRCode(document.getElementById('qrcode'), {
+                text: appUrl,
+                width: 300,
+                height: 300,
+                colorDark: '#000000',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        }
+
+        // Print styles
+        const style = document.createElement('style');
+        style.textContent = `
+            @media print {
+                body {
+                    background: white;
+                    padding: 0;
+                }
+                .container {
+                    box-shadow: none;
+                    padding: 20px;
+                }
+                .print-button,
+                .instructions {
+                    display: none;
+                }
+                #qrcode {
+                    page-break-inside: avoid;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+
+</html>
